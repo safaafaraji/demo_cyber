@@ -1,15 +1,25 @@
 module.exports = {
     ROLES: {
         ADMIN: 'admin',
-        USER: 'user',
+        STUDENT: 'student',
     },
     LAB_STATUS: {
-        STOPPED: 'stopped',
+        IDLE: 'idle',
+        INITIALIZING: 'initializing',
         RUNNING: 'running',
-        ERROR: 'error',
+        PAUSED: 'paused',
+        STOPPING: 'stopping',
+        FAILED: 'failed',
     },
     SESSION_STATUS: {
-        ACTIVE: 'active',
-        CLOSED: 'closed',
+        INITIALIZING: 'initializing',
+        RUNNING: 'running',
+        PAUSED: 'paused',
+        STOPPING: 'stopping',
+        COMPLETED: 'completed',
+        TIMEOUT: 'timeout',
+        TERMINATED: 'terminated',
+        FAILED: 'failed',
     },
 };
+

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('./LabCategory.model'); // Register LabCategory model
 
 const labSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true,
         unique: true,
@@ -11,19 +11,22 @@ const labSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    difficulty: {
-        type: String,
-        enum: ['easy', 'medium', 'hard', 'expert'],
-        required: true,
-    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'LabCategory',
         required: true,
     },
-    dockerImage: {
+    difficulty: {
+        type: String,
+        enum: ['easy', 'medium', 'hard', 'expert'],
+        required: true,
+    },
+    dockerImageName: {
         type: String,
         required: true,
+    },
+    vulnerabilityType: {
+        type: String,
     },
     points: {
         type: Number,
@@ -31,13 +34,14 @@ const labSchema = new mongoose.Schema({
     },
     flag: {
         type: String,
-        required: true, // In production, this should be hashed
-        select: false, // Don't return by default
+        required: true,
+        select: false,
     },
     isVisible: {
         type: Boolean,
         default: true,
     },
 }, { timestamps: true });
+
 
 module.exports = mongoose.model('Lab', labSchema);

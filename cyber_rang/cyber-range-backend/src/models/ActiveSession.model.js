@@ -14,7 +14,15 @@ const activeSessionSchema = new mongoose.Schema({
     },
     containerId: {
         type: String,
-        required: true,
+    },
+    networkId: {
+        type: String,
+    },
+    ipAddress: {
+        type: String,
+    },
+    portAssigned: {
+        type: Number,
     },
     portMapping: {
         type: Object, // e.g. { 80: 30001 }
@@ -22,12 +30,19 @@ const activeSessionSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: Object.values(SESSION_STATUS),
-        default: SESSION_STATUS.ACTIVE,
+        default: SESSION_STATUS.INITIALIZING,
+    },
+    startTime: {
+        type: Date,
+    },
+    endTime: {
+        type: Date,
     },
     expiresAt: {
         type: Date,
         required: true,
     },
 }, { timestamps: true });
+
 
 module.exports = mongoose.model('ActiveSession', activeSessionSchema);
