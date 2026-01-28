@@ -1,0 +1,46 @@
+services:
+  backend:
+    build: ./cyber-range-backend
+    container_name: cyber-range-backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./cyber-range-backend/.env
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/cyber-range
+      - DOCKER_SOCKET=/var/run/docker.sock
+      - NODE_ENV=production
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./cyber-range-backend/logs:/app/logs
+    depends_on:
+      - mongo
+    networks:
+      - cyber-range-network
+
+  frontend:
+    build: ./cyber-range-frontend
+    container_name: cyber-range-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - cyber-range-network
+
+  mongo:
+    image: mongo:latest
+    container_name: cyber-range-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - cyber-range-network
+
+networks:
+  cyber-range-network:
+    driver: bridge
+
+volumes:
+  mongo_data:
