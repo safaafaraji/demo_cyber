@@ -1,0 +1,114 @@
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top right, #1a2138 0%, var(--color-bg-primary) 60%);
+    padding: var(--spacing-md);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-brand {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.auth-brand h1 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    font-weight: 800;
+}
+
+.auth-brand p {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: var(--spacing-xs);
+}
+
+.auth-card {
+    border-top: 4px solid var(--color-accent-primary);
+    background: rgba(17, 22, 37, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.mt-md {
+    margin-top: var(--spacing-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.alert {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.875rem;
+}
+
+.alert-danger {
+    background-color: rgba(255, 0, 85, 0.1);
+    border: 1px solid var(--color-accent-danger);
+    color: var(--color-accent-danger);
+}
+
+.btn-google {
+    background: white !important;
+    color: #1a1a1a !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    margin-top: var(--spacing-md);
+}
+
+.btn-google:hover {
+    background: #f0f0f0 !important;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-divider:not(:empty)::before {
+    margin-right: var(--spacing-md);
+}
+
+.auth-divider:not(:empty)::after {
+    margin-left: var(--spacing-md);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}

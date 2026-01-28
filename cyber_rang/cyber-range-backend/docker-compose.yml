@@ -1,0 +1,31 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/cyber-range
+      - DOCKER_SOCKET=/var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./logs:/app/logs
+    depends_on:
+      - mongo
+    networks:
+      - cyber-range-net
+
+  mongo:
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - cyber-range-net
+
+networks:
+  cyber-range-net:
+    driver: bridge
+
+volumes:
+  mongo_data:

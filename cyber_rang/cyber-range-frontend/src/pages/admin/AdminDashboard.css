@@ -1,0 +1,121 @@
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.admin-stat-card .card-body {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+}
+
+.stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    line-height: 1;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-table th {
+    color: var(--color-text-muted);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.user-avatar-sm {
+    width: 32px;
+    height: 32px;
+    background: var(--color-bg-tertiary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.role-badge {
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.role-badge.admin {
+    background: rgba(112, 0, 255, 0.2);
+    color: var(--color-accent-secondary);
+}
+
+.role-badge.user {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-secondary);
+}
+
+.btn-icon-danger {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 4px;
+}
+
+.btn-icon-danger:hover {
+    color: var(--color-accent-danger);
+}
+.admin-toolbar {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.bg-danger-glow {
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid var(--color-accent-danger);
+    color: var(--color-accent-danger);
+}
+
+.bg-danger-glow:hover {
+    background: rgba(255, 0, 85, 0.2);
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+}
+
+.session-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
