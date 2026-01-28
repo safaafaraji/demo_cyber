@@ -22,12 +22,16 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: Object.values(ROLES),
-        default: ROLES.USER,
+        default: ROLES.STUDENT,
+    },
+    lastLogin: {
+        type: Date,
     },
     stats: {
         labsCompleted: { type: Number, default: 0 },
         points: { type: Number, default: 0 },
     },
+
     completedLabs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Lab'

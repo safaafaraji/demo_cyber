@@ -33,65 +33,65 @@ async function seed() {
     // Seed Labs
     const labs = [
         {
-            name: 'SQL Injection Basic',
+            title: 'SQL Injection Basic',
             description: 'Learn how to exploit a basic SQL injection vulnerability in a login form to bypass authentication.',
             difficulty: 'easy',
             category: webCat._id,
-            dockerImage: 'cyber-range/sqli-basic',
+            dockerImageName: 'cyber-range/sqli-basic',
             points: 100,
             flag: 'FLAG-SQLI-EASY-123'
         },
         {
-            name: 'XSS Reflected',
+            title: 'XSS Reflected',
             description: 'Execute malicious JavaScript in a victim\'s browser by reflecting input back to the page.',
             difficulty: 'easy',
             category: webCat._id,
-            dockerImage: 'cyber-range/xss-reflected',
+            dockerImageName: 'cyber-range/xss-reflected',
             points: 100,
             flag: 'FLAG-XSS-REFLECT-999'
         },
         {
-            name: 'Command Injection',
+            title: 'Command Injection',
             description: 'Exploit a vulnerable web shell to execute arbitrary system commands on the server.',
             difficulty: 'medium',
             category: webCat._id,
-            dockerImage: 'cyber-range/cmd-injection',
+            dockerImageName: 'cyber-range/cmd-injection',
             points: 250,
             flag: 'FLAG-CMD-INJ-555'
         },
         {
-            name: 'FTP Bruteforce',
+            title: 'FTP Bruteforce',
             description: 'Crack weak FTP passwords using dictionary attacks.',
             difficulty: 'easy',
             category: netCat._id,
-            dockerImage: 'cyber-range/ftp-weak',
+            dockerImageName: 'cyber-range/ftp-weak',
             points: 150,
             flag: 'FLAG-FTP-BRUTE-111'
         },
         {
-            name: 'Telnet Weak Auth',
+            title: 'Telnet Weak Auth',
             description: 'Intercept and decode unencrypted Telnet traffic to find credentials.',
             difficulty: 'medium',
             category: netCat._id,
-            dockerImage: 'cyber-range/telnet-sniff',
+            dockerImageName: 'cyber-range/telnet-sniff',
             points: 200,
             flag: 'FLAG-TELNET-CLEAR-222'
         },
         {
-            name: 'Weak RSA',
+            title: 'Weak RSA',
             description: 'Recover the private key from a public key generated with weak prime numbers.',
             difficulty: 'hard',
             category: cryptoCat._id,
-            dockerImage: 'cyber-range/weak-rsa',
+            dockerImageName: 'cyber-range/weak-rsa',
             points: 500,
             flag: 'FLAG-RSA-WEAK-777'
         },
         {
-            name: 'Memory Dump Analysis',
+            title: 'Memory Dump Analysis',
             description: 'Analyze a RAM dump to find hidden processes and passwords.',
             difficulty: 'expert',
             category: forenCat._id,
-            dockerImage: 'cyber-range/mem-dump',
+            dockerImageName: 'cyber-range/mem-dump',
             points: 1000,
             flag: 'FLAG-MEM-DUMP-888'
         }

@@ -47,10 +47,32 @@ class SecurityMonitorService {
     }
 
     async createAlert(sessionId, type, count) {
-        // In a real system, this might send a WebSocket message to admin or email
+        const socketHandler = require('../../websocket/socketHandler');
+        try {
+            const io = socketHandler.getIo();
+            // Emit to a specific room for this session/user
+            io.to(`session_${sessionId}`).emit('security-alert', {
+                type,
+                count,
+                message: `Suspicious behavior detected: ${type}`,
+                timestamp: new Date()
+            });
+
+            // Also notify admins
+            io.of('/admin').emit('admin-alert', {
+                sessionId,
+                type,
+                count,
+                timestamp: new Date()
+            });
+        } catch (e) {
+            logger.error(`Could not emit socket alert: ${e.message}`);
+        }
+
         logger.error(`ALERT: Session ${sessionId} exhibiting suspicious behavior: ${type} x${count}`);
     }
 }
+
 
 module.exports = new SecurityMonitorService();
 

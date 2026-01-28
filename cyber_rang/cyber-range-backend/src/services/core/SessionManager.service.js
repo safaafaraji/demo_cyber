@@ -44,7 +44,7 @@ class SessionManagerService {
 
             // 2. Create and start container
             const containerName = `lab_${userId}_${labId}_${Date.now()}`;
-            const container = await DockerService.createContainer(lab.dockerImage, {
+            const container = await DockerService.createContainer(lab.dockerImageName, {
                 name: containerName,
                 HostConfig: {
                     NetworkMode: networkName,
@@ -79,7 +79,7 @@ class SessionManagerService {
                 details: { containerId: container.id, networkId: network.id }
             });
 
-            await logAction(userId, 'SESSION_START', lab.name, { sessionId: session._id, port: hostPort });
+            await logAction(userId, 'SESSION_START', lab.title, { sessionId: session._id, port: hostPort });
 
             return session;
         } catch (error) {
@@ -109,7 +109,7 @@ class SessionManagerService {
             session.endTime = new Date();
             await session.save();
 
-            await logAction(session.user, 'SESSION_STOP', session.lab?.name || 'Unknown Lab', {
+            await logAction(session.user, 'SESSION_STOP', session.lab?.title || 'Unknown Lab', {
                 sessionId: session._id,
                 reason
             });

@@ -26,7 +26,7 @@ class LabManagerService {
         if (!lab) throw new Error('Lab not found');
 
         if (lab.flag !== submittedFlag) {
-            await logAction(userId, 'FLAG_REJECTED', lab.name, { flag: submittedFlag });
+            await logAction(userId, 'FLAG_REJECTED', lab.title, { flag: submittedFlag });
             return { success: false, message: 'Incorrect Flag' };
         }
 
@@ -34,7 +34,7 @@ class LabManagerService {
         const User = require('../../models/User.model');
         const user = await User.findById(userId);
         if (user.completedLabs && user.completedLabs.includes(labId)) {
-            await logAction(userId, 'FLAG_SUCCESS_REPEAT', lab.name);
+            await logAction(userId, 'FLAG_SUCCESS_REPEAT', lab.title);
             return { success: true, message: 'Flag correct! Lab already completed.', alreadyCompleted: true };
         }
 
@@ -44,10 +44,11 @@ class LabManagerService {
         user.stats.points += lab.points;
         await user.save();
 
-        await logAction(userId, 'FLAG_SUCCESS', lab.name, { points: lab.points });
+        await logAction(userId, 'FLAG_SUCCESS', lab.title, { points: lab.points });
 
         return { success: true, message: 'Flag Correct! Points awarded.', points: lab.points };
     }
 }
+
 
 module.exports = new LabManagerService();

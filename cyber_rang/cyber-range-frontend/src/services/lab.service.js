@@ -29,5 +29,31 @@ export const labService = {
     verifyFlag: async (labId, flag) => {
         const response = await api.post(`/labs/${labId}/verify`, { flag });
         return response.data;
+    },
+
+    stopLab: async (sessionId) => {
+        const response = await api.post(`/sessions/${sessionId}/stop`);
+        return response.data;
+    },
+
+    pauseLab: async (sessionId) => {
+        const response = await api.post(`/sessions/${sessionId}/pause`);
+        return response.data;
+    },
+
+    resumeLab: async (sessionId) => {
+        const response = await api.post(`/sessions/${sessionId}/resume`);
+        return response.data;
+    },
+
+    getLogs: async (sessionId) => {
+        const response = await api.get(`/sessions/${sessionId}/logs`);
+        return response.data;
+    },
+
+    emergencyStopAll: async () => {
+        const response = await api.post('/sessions/emergency-stop');
+        return response.data;
     }
 };
+
